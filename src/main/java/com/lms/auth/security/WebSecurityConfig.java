@@ -57,7 +57,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.cors().and().csrf().disable().
                 authorizeRequests()
-                .antMatchers("/api/auth/**").permitAll()
+                .antMatchers("/**").permitAll()
+                .antMatchers("/movies" + "/admin/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
@@ -65,4 +66,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         
         http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
     }
+    
+//    @Override
+//  	protected void configure(HttpSecurity http) throws Exception {
+//    	   http
+//		.csrf().disable()
+//		    // make sure we use stateless session; session won't be used to store user's state.
+//	 	    .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS) 	
+//		.and()
+//		    // handle an authorized attempts 
+//		.exceptionHandling().authenticationEntryPoint(unauthorizedHandler)
+//		.and()
+//		   // Add a filter to validate the tokens with every request
+//		   .addFilterAfter(new JwtTokenAuthenticationFilter(jwtConfig), UsernamePasswordAuthenticationFilter.class)
+//		// authorization requests config
+//		.authorizeRequests()
+//		   // allow all who are accessing "auth" service
+//		   .antMatchers(HttpMethod.POST, jwtConfig.getUri()).permitAll()  
+//		   // must be an admin if trying to access admin area (authentication is also required here)
+//		   .antMatchers("/movies" + "/admin/**").hasRole("ADMIN")
+//		   // Any other request must be authenticated
+//		   .anyRequest().authenticated(); 
+//	}
 }
