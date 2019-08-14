@@ -1,6 +1,7 @@
 package com.lms.model;
 
 import java.util.Date;
+
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -15,6 +16,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class University {
 
 	@Id
+
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
@@ -24,21 +26,15 @@ public class University {
 	@JsonIgnore
 	private Set<Faculty> faculties;
 
-	public University() {}
+	public University() {
+	}
 
 	public University(int id, String name, Date dateOfEstablishment) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.dateOfEstablishment = dateOfEstablishment;
-	}
 
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {

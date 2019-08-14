@@ -7,31 +7,25 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 @Entity
-public class Faculty {
+public class City {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+
 	private String name;
-
 	
-	@JsonIgnore
+	@JoinColumn(name = "country_id", nullable = false)
 	@ManyToOne
-	@JoinColumn(name = "university_id", nullable = false)
-	private University university;
-
-	public Faculty() {}
-
-	public Faculty(int id, String name, University university) {
+	private Country country;
+	
+	public City(int id, String name) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.university = university;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -48,11 +42,4 @@ public class Faculty {
 		this.name = name;
 	}
 
-	public University getUniversity() {
-		return university;
-	}
-
-	public void setUniversity(University university) {
-		this.university = university;
-	}
 }
