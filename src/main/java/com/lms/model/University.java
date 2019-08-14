@@ -8,6 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -25,16 +26,19 @@ public class University {
 	@OneToMany(mappedBy = "university")
 	@JsonIgnore
 	private Set<Faculty> faculties;
-
+	
+	@ManyToOne
+	private Address address;
+	
 	public University() {
 	}
 
-	public University(int id, String name, Date dateOfEstablishment) {
+	public University(int id, String name, Date dateOfEstablishment, Address address) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.dateOfEstablishment = dateOfEstablishment;
-
+		this.address = address;
 	}
 
 	public String getName() {
@@ -59,6 +63,22 @@ public class University {
 
 	public void setFaculties(Set<Faculty> faculties) {
 		this.faculties = faculties;
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 
 }
