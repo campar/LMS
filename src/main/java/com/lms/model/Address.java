@@ -15,7 +15,7 @@ public class Address {
 	private int id;
 	
 	private String street;
-	private String broj;
+	private String number;
 	
 	@JoinColumn(name = "city_id", nullable = false)
 	@ManyToOne
@@ -23,11 +23,11 @@ public class Address {
 	
 	public Address() {}
 	
-	public Address(int id, String street, String broj, City city) {
+	public Address(int id, String street, String number, City city) {
 		super();
 		this.id = id;
 		this.street = street;
-		this.broj = broj;
+		this.number = number;
 		this.city = city;
 	}
 	
@@ -43,11 +43,11 @@ public class Address {
 	public void setStreet(String street) {
 		this.street = street;
 	}
-	public String getBroj() {
-		return broj;
+	public String getNumber() {
+		return number;
 	}
-	public void setBroj(String broj) {
-		this.broj = broj;
+	public void setBroj(String number) {
+		this.number = number;
 	}
 
 	public City getCity() {
