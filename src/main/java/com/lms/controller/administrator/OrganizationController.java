@@ -23,11 +23,11 @@ public class OrganizationController {
 
 	@PostMapping("/faculty/{id}")
 	public Faculty update(@PathVariable("id") int id, @RequestBody Faculty faculty) {
-		Optional<Faculty> st = facultyService.findById(id);
-		if(st.isPresent()) {
+		Faculty st = facultyService.findById(id);
+//		if(st.isPresent()) {
 			return facultyService.save(faculty);
-		}
+//		}
 
-		return null;
+//		return null;
     }
 }

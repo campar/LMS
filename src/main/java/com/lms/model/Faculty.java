@@ -16,7 +16,8 @@ public class Faculty {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-
+	private String phoneNumber;
+	private String description;
 	
 	@JsonIgnore
 	@ManyToOne
@@ -25,11 +26,13 @@ public class Faculty {
 
 	public Faculty() {}
 
-	public Faculty(int id, String name, University university) {
+	public Faculty(int id, String name, University university, String phoneNumber, String description) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.university = university;
+		this.phoneNumber = phoneNumber;
+		this.description = description;
 	}
 	
 	public int getId() {
@@ -54,5 +57,21 @@ public class Faculty {
 
 	public void setUniversity(University university) {
 		this.university = university;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
 	}
 }

@@ -11,7 +11,6 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
 public class University {
@@ -22,9 +21,10 @@ public class University {
 	private int id;
 	private String name;
 	private Date dateOfEstablishment;
-
+	private String phoneNumber;
+	private String description;
+	
 	@OneToMany(mappedBy = "university")
-	@JsonIgnore
 	private Set<Faculty> faculties;
 	
 	@ManyToOne
@@ -33,12 +33,14 @@ public class University {
 	public University() {
 	}
 
-	public University(int id, String name, Date dateOfEstablishment, Address address) {
+	public University(int id, String name, Date dateOfEstablishment, Address address, String phoneNumber, String description) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.dateOfEstablishment = dateOfEstablishment;
 		this.address = address;
+		this.phoneNumber = phoneNumber;
+		this.description = description;
 	}
 
 	public String getName() {
@@ -79,6 +81,22 @@ public class University {
 
 	public void setAddress(Address address) {
 		this.address = address;
+	}
+
+	public String getPhoneNumber() {
+		return phoneNumber;
+	}
+
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 }
