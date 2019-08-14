@@ -1,7 +1,7 @@
 package com.lms.auth.security.services;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.lms.auth.model.User;
+import com.lms.model.User;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

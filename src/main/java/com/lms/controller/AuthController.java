@@ -18,16 +18,16 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
- 
-import com.lms.auth.message.request.LoginForm;
-import com.lms.auth.message.request.SignUpForm;
-import com.lms.auth.message.response.JwtResponse;
-import com.lms.auth.model.Role;
+
 import com.lms.auth.model.RoleName;
-import com.lms.auth.model.User;
-import com.lms.auth.repository.RoleRepository;
-import com.lms.auth.repository.UserRepository;
 import com.lms.auth.security.jwt.JwtProvider;
+import com.lms.model.Role;
+import com.lms.model.User;
+import com.lms.repository.RoleRepository;
+import com.lms.repository.UserRepository;
+import com.lms.request.LoginForm;
+import com.lms.request.SignUpForm;
+import com.lms.response.JwtResponse;
  
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController

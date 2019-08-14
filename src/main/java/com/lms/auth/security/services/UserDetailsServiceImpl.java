@@ -7,8 +7,8 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.lms.auth.model.User;
-import com.lms.auth.repository.UserRepository;
+import com.lms.model.User;
+import com.lms.repository.UserRepository;
  
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

@@ -1,4 +1,4 @@
-package com.lms.auth.message.request;
+package com.lms.request;
 
 import java.util.Set;
 

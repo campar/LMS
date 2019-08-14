@@ -1,4 +1,4 @@
-package com.lms.auth.model;
+package com.lms.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,6 +10,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
  
 import org.hibernate.annotations.NaturalId;
+
+import com.lms.auth.model.RoleName;
  
 @Entity
 @Table(name = "roles")

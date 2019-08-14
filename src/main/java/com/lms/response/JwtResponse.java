@@ -1,4 +1,4 @@
-package com.lms.auth.message.response;
+package com.lms.response;
 
 public class JwtResponse {
     private String token;

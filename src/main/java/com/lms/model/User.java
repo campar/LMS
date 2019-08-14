@@ -1,4 +1,4 @@
-package com.lms.auth.model;
+package com.lms.model;
 
 import java.util.HashSet;
 import java.util.Set;
