@@ -4,6 +4,6 @@ import org.springframework.data.repository.CrudRepository;
 
 import com.lms.model.University;
 
-public interface UniversityRepository extends CrudRepository<University, String>{
+public interface UniversityRepository extends CrudRepository<University, Integer>{
 
 }
