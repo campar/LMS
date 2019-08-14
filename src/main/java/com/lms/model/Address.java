@@ -8,7 +8,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class Adress {
+public class Address {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -19,13 +19,16 @@ public class Adress {
 	
 	@JoinColumn(name = "city_id", nullable = false)
 	@ManyToOne
-	private City city;
+	private City city; 
 	
-	public Adress(int id, String street, String broj) {
+	public Address() {}
+	
+	public Address(int id, String street, String broj, City city) {
 		super();
 		this.id = id;
 		this.street = street;
 		this.broj = broj;
+		this.city = city;
 	}
 	
 	public int getId() {
@@ -46,5 +49,15 @@ public class Adress {
 	public void setBroj(String broj) {
 		this.broj = broj;
 	}
+
+	public City getCity() {
+		return city;
+	}
+
+	public void setCity(City city) {
+		this.city = city;
+	}
+	
+	
 
 }

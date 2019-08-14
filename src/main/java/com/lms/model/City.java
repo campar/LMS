@@ -20,10 +20,13 @@ public class City {
 	@ManyToOne
 	private Country country;
 	
-	public City(int id, String name) {
+	public City() {}
+	
+	public City(int id, String name, Country country) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.country = country;
 	}
 
 	public int getId() {
@@ -42,4 +45,13 @@ public class City {
 		this.name = name;
 	}
 
+	public Country getCountry() {
+		return country;
+	}
+
+	public void setCountry(Country country) {
+		this.country = country;
+	}
+
+	
 }

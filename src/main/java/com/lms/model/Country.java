@@ -13,7 +13,8 @@ public class Country {
 	private int id;
 	
 	private String name;
-
+	
+	public Country() {}
 	public Country(int id, String name) {
 		super();
 		this.id = id;
