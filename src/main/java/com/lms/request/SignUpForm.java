@@ -1,8 +1,8 @@
 package com.lms.request;
 
-import java.util.Set;
-
 import javax.validation.constraints.*;
+
+import com.lms.model.Role;
  
 public class SignUpForm {
     @NotBlank
@@ -18,7 +18,7 @@ public class SignUpForm {
     @Email
     private String email;
     
-    private Set<String> role;
+    private Role role;
     
     @NotBlank
     @Size(min = 6, max = 40)
@@ -56,11 +56,11 @@ public class SignUpForm {
         this.password = password;
     }
     
-    public Set<String> getRole() {
+    public Role getRole() {
       return this.role;
     }
     
-    public void setRole(Set<String> role) {
+    public void setRole(Role role) {
       this.role = role;
     }
 }

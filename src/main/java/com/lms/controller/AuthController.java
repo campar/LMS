@@ -1,8 +1,5 @@
 package com.lms.controller;
 
-import java.util.HashSet;
-import java.util.Set;
- 
 import javax.validation.Valid;
  
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.lms.auth.model.RoleName;
 import com.lms.auth.security.jwt.JwtProvider;
 import com.lms.model.Role;
 import com.lms.model.User;
-import com.lms.repository.RoleRepository;
 import com.lms.repository.UserRepository;
 import com.lms.request.LoginForm;
 import com.lms.request.SignUpForm;
@@ -39,9 +34,7 @@ public class AuthController {
  
     @Autowired
     UserRepository userRepository;
- 
-    @Autowired
-    RoleRepository roleRepository;
+
  
     @Autowired
     PasswordEncoder encoder;
@@ -79,33 +72,8 @@ public class AuthController {
  
         // Creating user's account
         User user = new User(signUpRequest.getName(), signUpRequest.getUsername(),
-                signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()));
+                signUpRequest.getEmail(), encoder.encode(signUpRequest.getPassword()), signUpRequest.getRole());
  
-        Set<String> strRoles = signUpRequest.getRole();
-        Set<Role> roles = new HashSet<>();
- 
-        strRoles.forEach(role -> {
-          switch(role) {
-          case "admin":
-            Role adminRole = roleRepository.findByName(RoleName.ROLE_ADMIN)
-                  .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-            roles.add(adminRole);
-            
-            break;
-          case "pm":
-                Role pmRole = roleRepository.findByName(RoleName.ROLE_PM)
-                  .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-                roles.add(pmRole);
-                
-            break;
-          default:
-              Role userRole = roleRepository.findByName(RoleName.ROLE_USER)
-                  .orElseThrow(() -> new RuntimeException("Fail! -> Cause: User Role not find."));
-              roles.add(userRole);              
-          }
-        });
-        
-        user.setRoles(roles);
         userRepository.save(user);
  
         return ResponseEntity.ok().body("User registered successfully!");

@@ -1,16 +1,12 @@
 package com.lms.model;
 
-import java.util.HashSet;
-import java.util.Set;
- 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
 import javax.validation.constraints.Email;
@@ -51,19 +47,19 @@ public class User{
     @Size(min=6, max = 100)
     private String password;
  
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "user_roles", 
-      joinColumns = @JoinColumn(name = "user_id"), 
-      inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles = new HashSet<>();
+    @Enumerated(EnumType.STRING)
+    @NaturalId
+    @Column(length = 60)
+    private Role role;
+
+	public User() {}
  
-    public User() {}
- 
-    public User(String name, String username, String email, String password) {
+    public User(String name, String username, String email, String password, Role role) {
         this.name = name;
         this.username = username;
         this.email = email;
         this.password = password;
+        this.role = role;
     }
  
     public Long getId() {
@@ -105,12 +101,12 @@ public class User{
     public void setPassword(String password) {
         this.password = password;
     }
- 
-    public Set<Role> getRoles() {
-        return roles;
-    }
- 
-    public void setRoles(Set<Role> roles) {
-        this.roles = roles;
-    }
+    
+    public Role getRole() {
+		return role;
+	}
+
+	public void setRole(Role role) {
+		this.role = role;
+	}
 }
