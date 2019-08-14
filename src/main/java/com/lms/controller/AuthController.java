@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.lms.auth.security.jwt.JwtProvider;
-import com.lms.model.Role;
 import com.lms.model.User;
 import com.lms.repository.UserRepository;
 import com.lms.request.LoginForm;
