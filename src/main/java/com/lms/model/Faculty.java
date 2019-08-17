@@ -1,13 +1,17 @@
 package com.lms.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
 public class Faculty {
@@ -18,13 +22,18 @@ public class Faculty {
 	private String name;
 	private String phoneNumber;
 	private String description;
-	
+
 	@JsonIgnore
 	@ManyToOne
 	@JoinColumn(name = "university_id", nullable = false)
 	private University university;
 
-	public Faculty() {}
+	@JsonManagedReference
+	@OneToMany(mappedBy = "faculty")
+	private Set<StudyProgramme> studyProgrammes;
+
+	public Faculty() {
+	}
 
 	public Faculty(int id, String name, University university, String phoneNumber, String description) {
 		super();
@@ -34,7 +43,7 @@ public class Faculty {
 		this.phoneNumber = phoneNumber;
 		this.description = description;
 	}
-	
+
 	public int getId() {
 		return id;
 	}
@@ -73,5 +82,13 @@ public class Faculty {
 
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
+	}
+
+	public Set<StudyProgramme> getStudyProgrammes() {
+		return studyProgrammes;
+	}
+
+	public void setStudyProgrammes(Set<StudyProgramme> studyProgrammes) {
+		this.studyProgrammes = studyProgrammes;
 	}
 }

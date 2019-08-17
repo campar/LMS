@@ -13,6 +13,7 @@ import com.lms.model.University;
 import com.lms.service.UniversityService;
 
 @RestController
+
 public class UniversityController {
 
 	@Autowired
@@ -27,7 +28,7 @@ public class UniversityController {
 	public University getUniversityById(@PathVariable int id) {
 		return universityService.getUniversityById(id);
 	}
-	
+
 	@GetMapping("/university/{id}/faculties")
 	public Set<Faculty> getFacultiesByUniversityId(@PathVariable int id) {
 		return universityService.getFacultiesByUniversityId(id);

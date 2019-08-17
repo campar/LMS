@@ -1,7 +1,6 @@
 package com.lms.model;
 
 import java.util.Date;
-
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -11,29 +10,29 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-
 @Entity
+
 public class University {
 
 	@Id
-
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
 	private Date dateOfEstablishment;
 	private String phoneNumber;
 	private String description;
-	
+
 	@OneToMany(mappedBy = "university")
 	private Set<Faculty> faculties;
-	
+
 	@ManyToOne
 	private Address address;
-	
+
 	public University() {
 	}
 
-	public University(int id, String name, Date dateOfEstablishment, Address address, String phoneNumber, String description) {
+	public University(int id, String name, Date dateOfEstablishment, Address address, String phoneNumber,
+			String description) {
 		super();
 		this.id = id;
 		this.name = name;
