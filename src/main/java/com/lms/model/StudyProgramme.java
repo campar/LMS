@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -32,6 +33,10 @@ public class StudyProgramme {
 	@OneToMany(mappedBy = "studyProgramme")
 	@JsonManagedReference
 	private Set<YearOfStudy> yearsOfStudy;
+
+	@ManyToOne
+	@JoinColumn(name = "director", referencedColumnName = "id", insertable = false, updatable = false)
+	private Professor director;
 
 	public StudyProgramme() {
 	}
@@ -81,6 +86,14 @@ public class StudyProgramme {
 
 	public void setYearsOfStudy(Set<YearOfStudy> yearsOfStudy) {
 		this.yearsOfStudy = yearsOfStudy;
+	}
+
+	public Professor getDirector() {
+		return director;
+	}
+
+	public void setDirector(Professor director) {
+		this.director = director;
 	}
 
 }

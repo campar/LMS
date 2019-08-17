@@ -32,6 +32,10 @@ public class Faculty {
 	@OneToMany(mappedBy = "faculty")
 	private Set<StudyProgramme> studyProgrammes;
 
+	@ManyToOne
+	@JoinColumn(name = "dean", referencedColumnName = "id", insertable = false, updatable = false)
+	private Professor dean;
+
 	public Faculty() {
 	}
 
@@ -91,4 +95,13 @@ public class Faculty {
 	public void setStudyProgrammes(Set<StudyProgramme> studyProgrammes) {
 		this.studyProgrammes = studyProgrammes;
 	}
+
+	public Professor getDean() {
+		return dean;
+	}
+
+	public void setDean(Professor dean) {
+		this.dean = dean;
+	}
+
 }

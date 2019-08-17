@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -28,6 +29,10 @@ public class University {
 	@ManyToOne
 	private Address address;
 
+	@ManyToOne
+	@JoinColumn(name = "rector", referencedColumnName = "id", insertable = false, updatable = false)
+	private Professor rector;
+
 	public University() {
 	}
 
@@ -48,6 +53,14 @@ public class University {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public Professor getRector() {
+		return rector;
+	}
+
+	public void setRector(Professor rector) {
+		this.rector = rector;
 	}
 
 	public Date getDateOfEstablishment() {
