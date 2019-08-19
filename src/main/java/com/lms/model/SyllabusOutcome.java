@@ -1,14 +1,14 @@
 package com.lms.model;
 
-import java.util.Date;
-
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+
+import org.hibernate.annotations.Type;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -20,26 +20,29 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class ProfessorTitle {
+public class SyllabusOutcome {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private long id;
-	private String name;
-	private Date dateStart;
-	private Date dateEnd;
+	private int id;
+
+	@Column(unique = true)
+	private int sort;
+	private String period;
+
+	@Type(type = "text")
+	private String description;
 
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "field_id", nullable = false)
-	private ScientificField scientificField;
+	private Subject subject;
 
-	public ProfessorTitle(long id, String name, Date dateStart, Date dateEnd, ScientificField scientificField) {
+	public SyllabusOutcome(int id, int sort, String period, String description, Subject subject) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.dateStart = dateStart;
-		this.dateEnd = dateEnd;
-		this.scientificField = scientificField;
+		this.sort = sort;
+		this.period = period;
+		this.description = description;
+		this.subject = subject;
 	}
 }
