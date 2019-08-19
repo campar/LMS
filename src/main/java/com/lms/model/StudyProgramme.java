@@ -3,6 +3,7 @@ package com.lms.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,10 +13,18 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Type;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.lms.utils.View;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class StudyProgramme {
 
 	@Id
@@ -26,20 +35,18 @@ public class StudyProgramme {
 	@Type(type = "text")
 	private String description;
 
-	@ManyToOne
-	@JsonBackReference
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Faculty faculty;
 
+	@JsonView(View.YearOfStudy.class)
 	@OneToMany(mappedBy = "studyProgramme")
-	@JsonManagedReference
 	private Set<YearOfStudy> yearsOfStudy;
 
 	@ManyToOne
+	@JsonView(View.YearOfStudy.class)
 	@JoinColumn(name = "director", referencedColumnName = "id", insertable = false, updatable = false)
 	private Professor director;
-
-	public StudyProgramme() {
-	}
 
 	public StudyProgramme(String name, String description, Faculty faculty) {
 		super();
@@ -47,53 +54,4 @@ public class StudyProgramme {
 		this.description = description;
 		this.faculty = faculty;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public Faculty getFaculty() {
-		return faculty;
-	}
-
-	public void setFaculty(Faculty faculty) {
-		this.faculty = faculty;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public Set<YearOfStudy> getYearsOfStudy() {
-		return yearsOfStudy;
-	}
-
-	public void setYearsOfStudy(Set<YearOfStudy> yearsOfStudy) {
-		this.yearsOfStudy = yearsOfStudy;
-	}
-
-	public Professor getDirector() {
-		return director;
-	}
-
-	public void setDirector(Professor director) {
-		this.director = director;
-	}
-
 }

@@ -2,6 +2,7 @@ package com.lms.model;
 
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -10,10 +11,17 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.lms.utils.View;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Faculty {
 
 	@Id
@@ -23,85 +31,28 @@ public class Faculty {
 	private String phoneNumber;
 	private String description;
 
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "university_id", nullable = false)
+	@JsonView(View.Faculty.class)
+	@ManyToOne(cascade = CascadeType.ALL)
 	private University university;
 
-	@JsonManagedReference
+	@JsonView(View.Faculty.class)
 	@OneToMany(mappedBy = "faculty")
 	private Set<StudyProgramme> studyProgrammes;
 
 	@ManyToOne
+	@JsonView(View.Faculty.class)
 	@JoinColumn(name = "dean", referencedColumnName = "id", insertable = false, updatable = false)
 	private Professor dean;
 
-	public Faculty() {
-	}
-
-	public Faculty(int id, String name, University university, String phoneNumber, String description) {
+	public Faculty(int id, String name, String phoneNumber, String description, University university,
+			Set<StudyProgramme> studyProgrammes, Professor dean) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.university = university;
 		this.phoneNumber = phoneNumber;
 		this.description = description;
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public University getUniversity() {
-		return university;
-	}
-
-	public void setUniversity(University university) {
 		this.university = university;
-	}
-
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
-	public String getPhoneNumber() {
-		return phoneNumber;
-	}
-
-	public void setPhoneNumber(String phoneNumber) {
-		this.phoneNumber = phoneNumber;
-	}
-
-	public Set<StudyProgramme> getStudyProgrammes() {
-		return studyProgrammes;
-	}
-
-	public void setStudyProgrammes(Set<StudyProgramme> studyProgrammes) {
 		this.studyProgrammes = studyProgrammes;
-	}
-
-	public Professor getDean() {
-		return dean;
-	}
-
-	public void setDean(Professor dean) {
 		this.dean = dean;
 	}
-
 }

@@ -8,8 +8,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.fasterxml.jackson.annotation.JsonView;
 import com.lms.model.Faculty;
 import com.lms.service.FacultyService;
+import com.lms.utils.View;
 
 @RestController
 @RequestMapping("/faculties")
@@ -23,6 +25,7 @@ public class FacultyController {
 		return facultyService.getAllFaculties();
 	}
 
+	@JsonView(View.Faculty.class)
 	@GetMapping("/{id}")
 	public Faculty getFacultyById(@PathVariable int id) {
 		return facultyService.findById(id);

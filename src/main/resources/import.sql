@@ -48,7 +48,7 @@ INSERT INTO `university` (`id`, `date_of_establishment`, `description`, `name`, 
 	#FACULTY INSERTS
 	#===================
 INSERT INTO `faculty` (`id`, `description`, `name`, `phone_number`, `dean`, `university_id`) VALUES (NULL, 'opis fakulteta', 'SII', '+381000000', '1', '1');					
-
+INSERT INTO `faculty` (`id`, `description`, `name`, `phone_number`, `dean`, `university_id`) VALUES (NULL, 'kada savladate fakultet internet tehnologija znacete da korisite internete', 'IT', '+381640000', '1', '1');
 
 	#===================
 	#STUDY_PROGRAMME  INSERTS

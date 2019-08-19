@@ -13,25 +13,22 @@ import com.lms.repository.UniversityRepository;
 
 @Service
 public class UniversityService {
-	
+
 	@Autowired
 	private UniversityRepository universityRepository;
-	
-	
+
 	public List<University> getAllUniversity() {
 		List<University> universities = new ArrayList<>();
 		universityRepository.findAll().forEach(universities::add);
 		return universities;
 	}
-	 
+
 	public University getUniversityById(int id) {
 		return universityRepository.findById(id).get();
 	}
-	
+
 	public Set<Faculty> getFacultiesByUniversityId(int id) {
-		
+
 		return universityRepository.findById(id).get().getFaculties();
 	}
-
-
 }

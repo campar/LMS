@@ -3,6 +3,7 @@ package com.lms.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -11,29 +12,30 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class YearOfStudy {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
 	private int godina;
 
-	@ManyToOne
-	@JsonBackReference
+	@JsonIgnore
+	@ManyToOne(fetch = FetchType.LAZY)
 	private StudyProgramme studyProgramme;
 
-	@JsonManagedReference
-	@JoinTable(name = "year_of_study_subject", joinColumns = @JoinColumn(name = "year_of_study_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
 	@ManyToMany
+	@JoinTable(name = "year_of_study_subject", joinColumns = @JoinColumn(name = "year_of_study_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
 	private Set<Subject> subjects;
-
-	public YearOfStudy() {
-	}
 
 	public YearOfStudy(int id, int godina, StudyProgramme studyProgramme) {
 		super();
@@ -41,37 +43,4 @@ public class YearOfStudy {
 		this.godina = godina;
 		this.studyProgramme = studyProgramme;
 	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public int getGodina() {
-		return godina;
-	}
-
-	public void setGodina(int godina) {
-		this.godina = godina;
-	}
-
-	public Set<Subject> getSubjects() {
-		return subjects;
-	}
-
-	public void setSubjects(Set<Subject> subjects) {
-		this.subjects = subjects;
-	}
-
-	public StudyProgramme getStudyProgramme() {
-		return studyProgramme;
-	}
-
-	public void setStudyProgramme(StudyProgramme studyProgramme) {
-		this.studyProgramme = studyProgramme;
-	}
-
 }
