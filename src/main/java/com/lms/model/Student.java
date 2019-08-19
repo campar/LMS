@@ -5,12 +5,12 @@ import javax.persistence.Entity;
 @Entity
 public class Student extends User {
 	private String name;
-	private long jmbg;
+	private String jmbg;
 
 	public Student() {
 	}
 
-	public Student(String name, long jmbg) {
+	public Student(String name, String jmbg) {
 		super();
 		this.name = name;
 		this.jmbg = jmbg;
@@ -24,11 +24,11 @@ public class Student extends User {
 		this.name = name;
 	}
 
-	public long getJmbg() {
+	public String getJmbg() {
 		return jmbg;
 	}
 
-	public void setJmbg(long jmbg) {
+	public void setJmbg(String jmbg) {
 		this.jmbg = jmbg;
 	}
 }

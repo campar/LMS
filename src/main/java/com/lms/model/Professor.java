@@ -9,7 +9,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Entity
 public class Professor extends User {
 	private String name;
-	private long jmbg;
+	private String jmbg;
 	private String biography;
 
 	@JsonIgnore
@@ -20,7 +20,7 @@ public class Professor extends User {
 	public Professor() {
 	}
 
-	public Professor(String name, long jmbg, String biography, ProfessorTitle title) {
+	public Professor(String name, String jmbg, String biography, ProfessorTitle title) {
 		super();
 		this.name = name;
 		this.jmbg = jmbg;
@@ -36,11 +36,11 @@ public class Professor extends User {
 		this.name = name;
 	}
 
-	public long getJmbg() {
+	public String getJmbg() {
 		return jmbg;
 	}
 
-	public void setJmbg(long jmbg) {
+	public void setJmbg(String jmbg) {
 		this.jmbg = jmbg;
 	}
 
