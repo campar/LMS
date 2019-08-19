@@ -1,9 +1,13 @@
 package com.lms.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -17,19 +21,20 @@ import lombok.Setter;
 @NoArgsConstructor
 public class Professor extends User {
 	private String name;
+	@Size(max = 13)
 	private String jmbg;
 	private String biography;
 
 	@JsonIgnore
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "title_id", nullable = false)
-	private ProfessorTitle title;
+	@ManyToMany
+    Set<Title> titles;
 
-	public Professor(String name, String jmbg, String biography, ProfessorTitle title) {
-		super();
+	public Professor(String username, String email, String password, Role role, String name,
+			@Size(max = 13) String jmbg, String biography, Set<Title> titles) {
+		super(username, email, password, role);
 		this.name = name;
 		this.jmbg = jmbg;
 		this.biography = biography;
-		this.title = title;
+		this.titles = titles;
 	}
 }

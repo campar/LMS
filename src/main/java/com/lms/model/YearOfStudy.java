@@ -1,5 +1,6 @@
 package com.lms.model;
 
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -36,6 +38,9 @@ public class YearOfStudy {
 	@ManyToMany
 	@JoinTable(name = "year_of_study_subject", joinColumns = @JoinColumn(name = "year_of_study_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
 	private Set<Subject> subjects;
+	
+	@OneToMany(mappedBy = "yearOfStudy")
+    private Set<StudentYearOfStudy> studentYearOfStudy = new HashSet<StudentYearOfStudy>();
 
 	public YearOfStudy(int id, int godina, StudyProgramme studyProgramme) {
 		super();

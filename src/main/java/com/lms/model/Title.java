@@ -1,6 +1,7 @@
 package com.lms.model;
 
 import java.util.Date;
+import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -8,6 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -20,7 +22,7 @@ import lombok.Setter;
 @Setter
 @Getter
 @NoArgsConstructor
-public class ProfessorTitle {
+public class Title {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,13 +35,19 @@ public class ProfessorTitle {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "field_id", nullable = false)
 	private ScientificField scientificField;
+	
+	@JsonIgnore
+	@ManyToMany(mappedBy="titles")
+    Set<Professor> professors;
 
-	public ProfessorTitle(long id, String name, Date dateStart, Date dateEnd, ScientificField scientificField) {
+	public Title(long id, String name, Date dateStart, Date dateEnd, ScientificField scientificField,
+			Set<Professor> professors) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.dateStart = dateStart;
 		this.dateEnd = dateEnd;
 		this.scientificField = scientificField;
+		this.professors = professors;
 	}
 }
