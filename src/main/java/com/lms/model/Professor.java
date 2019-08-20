@@ -1,62 +1,40 @@
 package com.lms.model;
 
+import java.util.Set;
+
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
+@Setter
+@Getter
+@NoArgsConstructor
 public class Professor extends User {
 	private String name;
+	@Size(max = 13)
 	private String jmbg;
 	private String biography;
 
 	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name = "title_id", nullable = false)
-	private ProfessorTitle title;
+	@ManyToMany
+    Set<Title> titles;
 
-	public Professor() {
-	}
-
-	public Professor(String name, String jmbg, String biography, ProfessorTitle title) {
-		super();
+	public Professor(String username, String email, String password, Role role, String name,
+			@Size(max = 13) String jmbg, String biography, Set<Title> titles) {
+		super(username, email, password, role);
 		this.name = name;
 		this.jmbg = jmbg;
 		this.biography = biography;
-		this.title = title;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getJmbg() {
-		return jmbg;
-	}
-
-	public void setJmbg(String jmbg) {
-		this.jmbg = jmbg;
-	}
-
-	public String getBiography() {
-		return biography;
-	}
-
-	public void setBiography(String biography) {
-		this.biography = biography;
-	}
-
-	public ProfessorTitle getTitle() {
-		return title;
-	}
-
-	public void setTitle(ProfessorTitle title) {
-		this.title = title;
+		this.titles = titles;
 	}
 }
