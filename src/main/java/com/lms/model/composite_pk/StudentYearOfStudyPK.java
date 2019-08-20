@@ -11,6 +11,6 @@ public class StudentYearOfStudyPK implements Serializable {
 	@Column(name = "student_id")
     private Long student_id;
 
-     @Column(name = "year_of_study_id")
+    @Column(name = "year_of_study_id")
     private Long year_of_study_id;
 }

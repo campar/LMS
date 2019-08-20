@@ -28,7 +28,7 @@ public class YearOfStudy {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	private int godina;
 
 	@JsonIgnore
@@ -42,7 +42,7 @@ public class YearOfStudy {
 	@OneToMany(mappedBy = "yearOfStudy")
     private Set<StudentYearOfStudy> studentYearOfStudy = new HashSet<StudentYearOfStudy>();
 
-	public YearOfStudy(int id, int godina, StudyProgramme studyProgramme) {
+	public YearOfStudy(Long id, int godina, StudyProgramme studyProgramme) {
 		super();
 		this.id = id;
 		this.godina = godina;
