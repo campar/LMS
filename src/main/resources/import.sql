@@ -12,9 +12,21 @@ INSERT INTO `address` (`id`, `number`, `street`, `city_id`) VALUES (NULL, '13', 
 
 
 #===================
+#USER INSERTS
+#===================
+
+INSERT INTO `users` (`id`, `email`, `password`, `role`, `username`) VALUES (NULL, 'email@gmail.com', 'profesor', 'ROLE_PROFESSOR', 'zvonko123');
+
+
+#===================
+#STUDENT STUFF INSERTS
+#===================
+INSERT INTO `student` (`jmbg`, `name`, `id`, `last_name`) VALUES (NULL, 'Blago', '1', 'Colic')
+
+#===================
 #PROFESSOR STUFF INSERTS
 #===================
-INSERT INTO `users` (`id`, `email`, `password`, `role`, `username`) VALUES (NULL, 'email@gmail.com', 'profesor', 'ROLE_PROFESSOR', 'zvonko123');
+
 INSERT INTO `scientific_field` (`id`, `name`) VALUES ('1', 'Matematicke Nauke');
 INSERT INTO `title` (`id`, `date_end`, `date_start`, `name`, `field_id`) VALUES ('1', '2019-08-01 00:00:00', '2019-08-02 00:00:00', 'Master matematicar', '1');
 INSERT INTO `professor` (`biography`, `jmbg`, `name`, `id`) VALUES ('Cao, ja sam zvonko i master sam matematika', '9999999999', 'Zvonko', '1');
