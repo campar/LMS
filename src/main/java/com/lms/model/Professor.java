@@ -3,13 +3,10 @@ package com.lms.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -25,7 +22,7 @@ public class Professor extends User {
 	private String jmbg;
 	private String biography;
 
-	@JsonIgnore
+	@JsonBackReference
 	@ManyToMany
     Set<Title> titles;
 
