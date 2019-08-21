@@ -1,7 +1,6 @@
 package com.lms.model;
 
 import java.util.Date;
-import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -9,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -35,19 +33,19 @@ public class Title {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "field_id", nullable = false)
 	private ScientificField scientificField;
-	
+
 	@JsonIgnore
-	@ManyToMany(mappedBy="titles")
-    Set<Professor> professors;
+	@ManyToOne
+	Professor professor;
 
 	public Title(long id, String name, Date dateStart, Date dateEnd, ScientificField scientificField,
-			Set<Professor> professors) {
+			Professor professor) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.dateStart = dateStart;
 		this.dateEnd = dateEnd;
 		this.scientificField = scientificField;
-		this.professors = professors;
+		this.professor = professor;
 	}
 }
