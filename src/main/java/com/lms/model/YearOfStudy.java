@@ -29,7 +29,7 @@ public class YearOfStudy {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private int godina;
+	private int year;
 
 	@JsonIgnore
 	@ManyToOne(fetch = FetchType.LAZY)
@@ -42,10 +42,10 @@ public class YearOfStudy {
 	@OneToMany(mappedBy = "yearOfStudy")
     private Set<StudentYearOfStudy> studentYearOfStudy = new HashSet<StudentYearOfStudy>();
 
-	public YearOfStudy(Long id, int godina, StudyProgramme studyProgramme) {
+	public YearOfStudy(Long id, int year, StudyProgramme studyProgramme) {
 		super();
 		this.id = id;
-		this.godina = godina;
+		this.year = year;
 		this.studyProgramme = studyProgramme;
 	}
 }
