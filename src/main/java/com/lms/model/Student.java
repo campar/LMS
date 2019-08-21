@@ -7,37 +7,28 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
 public class Student extends User {
 	private String name;
+	private String lastName;
 	@Size(max = 13)
 	private String jmbg;
-	
+
 	@OneToMany(mappedBy = "student")
-    private Set<StudentYearOfStudy> studentYearOfStudy = new HashSet<StudentYearOfStudy>();
+	private Set<StudentYearOfStudy> studentYearOfStudy = new HashSet<StudentYearOfStudy>();
 
-	public Student() {
-	}
-
-	public Student(String name, @Size(max = 13) String jmbg) {
+	public Student(String name, @Size(max = 13) String jmbg, String lastName) {
 		super();
 		this.name = name;
 		this.jmbg = jmbg;
+		this.lastName = lastName;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getJmbg() {
-		return jmbg;
-	}
-
-	public void setJmbg(String jmbg) {
-		this.jmbg = jmbg;
-	}
 }
