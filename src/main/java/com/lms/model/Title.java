@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -29,12 +29,12 @@ public class Title {
 	private Date dateStart;
 	private Date dateEnd;
 
-	@JsonIgnore
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "field_id", nullable = false)
 	private ScientificField scientificField;
 
-	@JsonIgnore
+	@JsonBackReference
 	@ManyToOne
 	Professor professor;
 

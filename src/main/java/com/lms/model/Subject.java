@@ -9,7 +9,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.lms.utils.View;
 
@@ -35,7 +35,7 @@ public class Subject {
 	private int researchWork;
 	private int otherClasses;
 
-	@JsonIgnore
+	@JsonBackReference
 	@ManyToMany(mappedBy = "subjects")
 	private Set<YearOfStudy> yearOfStudy;
 

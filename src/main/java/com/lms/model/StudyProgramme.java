@@ -13,7 +13,7 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Type;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.lms.utils.View;
 
@@ -35,7 +35,7 @@ public class StudyProgramme {
 	@Type(type = "text")
 	private String description;
 
-	@JsonIgnore
+	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Faculty faculty;
 
