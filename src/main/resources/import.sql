@@ -43,8 +43,8 @@ INSERT INTO `study_programme` (`id`, `description`, `name`, `director`, `faculty
 #===================
 #YEAR_OF_STUDY  INSERTS
 #===================
-INSERT INTO `year_of_study` (`id`, `godina`, `study_programme_id`) VALUES (NULL, '1', '1');
-INSERT INTO `year_of_study` (`id`, `godina`, `study_programme_id`) VALUES (NULL, '2', '1');
+INSERT INTO `year_of_study` (`id`, `year`, `study_programme_id`) VALUES (NULL, '1', '1');
+INSERT INTO `year_of_study` (`id`, `year`, `study_programme_id`) VALUES (NULL, '2', '1');
 
 #===================
 #SUBJECT INSERTS
