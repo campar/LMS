@@ -3,7 +3,7 @@ package com.lms.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -23,8 +23,8 @@ public class Professor extends User {
 	private String biography;
 
 	@JsonBackReference
-	@ManyToMany
-    Set<Title> titles;
+	@OneToMany(mappedBy = "professor")
+	Set<Title> titles;
 
 	public Professor(String username, String email, String password, Role role, String name,
 			@Size(max = 13) String jmbg, String biography, Set<Title> titles) {
