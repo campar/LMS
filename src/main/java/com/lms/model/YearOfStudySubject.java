@@ -23,7 +23,7 @@ public class YearOfStudySubject {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
+
 	@Size(max = 2)
 	private int finalGrade;
 
