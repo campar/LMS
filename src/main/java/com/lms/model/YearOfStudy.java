@@ -8,9 +8,6 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -35,9 +32,8 @@ public class YearOfStudy {
 	@ManyToOne(fetch = FetchType.LAZY)
 	private StudyProgramme studyProgramme;
 
-	@ManyToMany
-	@JoinTable(name = "year_of_study_subject", joinColumns = @JoinColumn(name = "year_of_study_id"), inverseJoinColumns = @JoinColumn(name = "subject_id"))
-	private Set<Subject> subjects;
+	@OneToMany(mappedBy = "yearOfStudy")
+	private Set<YearOfStudySubject> yearOfStudySubject;
 	
 	@OneToMany(mappedBy = "yearOfStudy")
     private Set<StudentYearOfStudy> studentYearOfStudy = new HashSet<StudentYearOfStudy>();

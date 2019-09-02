@@ -3,22 +3,23 @@ package com.lms.model;
 import java.util.Date;
 
 import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
-import com.lms.model.composite_pk.StudentYearOfStudyPK;
-
 @Entity
 @Table(name = "student_year_of_study")
 public class StudentYearOfStudy {
-	@EmbeddedId
-	private StudentYearOfStudyPK id;
-	
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int id;
+
 	@ManyToOne
     @MapsId("student_id")
     @JoinColumn(name = "student_id")

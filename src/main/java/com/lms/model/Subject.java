@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -36,15 +35,15 @@ public class Subject {
 	private int otherClasses;
 
 	@JsonBackReference
-	@ManyToMany(mappedBy = "subjects")
-	private Set<YearOfStudy> yearOfStudy;
+	@OneToMany(mappedBy = "subject")
+	private Set<YearOfStudySubject> yearOfStudySubject;
 
 	@JsonView(View.Subject.class)
 	@OneToMany(mappedBy = "subject")
 	private Set<SyllabusOutcome> syllabusOutcomes;
 
 	public Subject(int id, String name, int espb, Boolean required, int numberOfLectures, int numberOfExercises,
-			int differentKindOfLectures, int researchWork, int otherClasses, Set<YearOfStudy> yearOfStudy,
+			int differentKindOfLectures, int researchWork, int otherClasses, Set<YearOfStudySubject> yearOfStudySubject,
 			Set<SyllabusOutcome> syllabusOutcomes) {
 		super();
 		this.id = id;
@@ -56,7 +55,7 @@ public class Subject {
 		this.differentKindOfLectures = differentKindOfLectures;
 		this.researchWork = researchWork;
 		this.otherClasses = otherClasses;
-		this.yearOfStudy = yearOfStudy;
+		this.yearOfStudySubject = yearOfStudySubject;
 		this.syllabusOutcomes = syllabusOutcomes;
 	}
 }
