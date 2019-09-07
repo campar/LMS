@@ -12,6 +12,9 @@ import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -20,6 +23,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Table(name = "year_of_study_subject")
 public class YearOfStudySubject {
 	@Id
@@ -34,7 +38,7 @@ public class YearOfStudySubject {
 	@MapsId("year_of_study_id")
 	@JoinColumn(name = "year_of_study_id")
 	private YearOfStudy yearOfStudy;
-	
+
 	@OneToMany(mappedBy = "yearOfStudySubject")
 	private Set<FinalGrade> finalGrades;
 
