@@ -31,4 +31,9 @@ public class ExamResults {
     @MapsId("student_id")
     @JoinColumn(name = "student_id")
     private Student student;
+	
+	@ManyToOne
+    @MapsId("syos_id")
+    @JoinColumn(name = "syos_id")
+    private YearOfStudySubject yearOfStudySubject;
 }

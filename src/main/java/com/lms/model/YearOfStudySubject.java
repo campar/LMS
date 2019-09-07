@@ -38,6 +38,11 @@ public class YearOfStudySubject {
 	@MapsId("year_of_study_id")
 	@JoinColumn(name = "year_of_study_id")
 	private YearOfStudy yearOfStudy;
+	
+	@ManyToOne
+    @MapsId("professor_id")
+    @JoinColumn(name = "professor_id")
+    private Professor professor;
 
 	@OneToMany(mappedBy = "yearOfStudySubject")
 	private Set<FinalGrade> finalGrades;

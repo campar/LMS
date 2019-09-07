@@ -23,7 +23,6 @@ public class ExamPeriod {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	private int maxPoints;
 	private Date startTime;
 	private Date endTime;
 	
@@ -32,18 +31,13 @@ public class ExamPeriod {
 	
 	@ManyToOne
 	private ExamType examType;
-	
-	@ManyToOne
-	private YearOfStudySubject yearOfStudySubject;
 
-	public ExamPeriod(int id, String name, int maxPoints, Date startTime, Date endTime, ExamType examType, YearOfStudySubject yearOfStudySubject) {
+	public ExamPeriod(int id, String name, Date startTime, Date endTime, ExamType examType) {
 		super();
 		this.id = id;
 		this.name = name;
-		this.maxPoints = maxPoints;
 		this.startTime = startTime;
 		this.endTime = endTime;
 		this.examType = examType;
-		this.yearOfStudySubject = yearOfStudySubject;
 	}
 }
