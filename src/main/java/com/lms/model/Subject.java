@@ -8,8 +8,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.lms.utils.View;
 
 import lombok.Getter;
@@ -20,6 +21,7 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 public class Subject {
 
 	@Id
@@ -34,7 +36,7 @@ public class Subject {
 	private int researchWork;
 	private int otherClasses;
 
-	@JsonBackReference
+//	@JsonBackReference
 	@OneToMany(mappedBy = "subject")
 	private Set<YearOfStudySubject> yearOfStudySubject;
 

@@ -8,13 +8,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.Table;
+import javax.validation.constraints.Size;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table(name = "student_year_of_study")
-public class StudentYearOfStudy {
+@Getter
+@Setter
+@NoArgsConstructor
+@Table(name = "final_grade")
+public class FinalGrade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
+	
+	@Size(max = 2)
+	private int final_grade;
 
 	@ManyToOne
     @MapsId("student_id")
@@ -22,7 +33,7 @@ public class StudentYearOfStudy {
     private Student student;
 	
 	@ManyToOne
-    @MapsId("year_of_study_id")
-    @JoinColumn(name = "year_of_study_id")
-    private YearOfStudy yearOfStudy;
+    @MapsId("syos_id")
+    @JoinColumn(name = "syos_id")
+    private YearOfStudySubject yearOfStudySubject;
 }
