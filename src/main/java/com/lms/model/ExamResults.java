@@ -7,22 +7,28 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
-import javax.persistence.Table;
+
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
-@Table(name = "student_year_of_study")
-public class StudentYearOfStudy {
+@Getter
+@Setter
+@NoArgsConstructor
+public class ExamResults {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-
+	private int points;
+	
+	@ManyToOne
+    @MapsId("exam_period_id")
+    @JoinColumn(name = "exam_period_id")
+    private ExamPeriod examPeriod;
+	
 	@ManyToOne
     @MapsId("student_id")
     @JoinColumn(name = "student_id")
     private Student student;
-	
-	@ManyToOne
-    @MapsId("year_of_study_id")
-    @JoinColumn(name = "year_of_study_id")
-    private YearOfStudy yearOfStudy;
 }

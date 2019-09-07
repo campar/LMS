@@ -23,9 +23,9 @@ public class ExamType {
 	private String name;
 	
 	@OneToMany(mappedBy = "examType")
-	private Set<Exam> exams;
+	private Set<ExamPeriod> exams;
 
-	public ExamType(int id, String name, Set<Exam> exams) {
+	public ExamType(int id, String name, Set<ExamPeriod> exams) {
 		super();
 		this.id = id;
 		this.name = name;

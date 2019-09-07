@@ -21,6 +21,15 @@ public class Student extends User {
 	private String jmbg;
 	
 	@OneToMany(mappedBy = "student")
+	private Set<StudyProgrammeStudent> studyProgrammeStudents;
+	
+	@OneToMany(mappedBy = "student")
+	private Set<FinalGrade> finalGrades;
+	
+	@OneToMany(mappedBy = "student")
+	private Set<ExamResults> examResults;
+	
+	@OneToMany(mappedBy = "student")
     private Set<StudentYearOfStudy> studentYearOfStudy = new HashSet<StudentYearOfStudy>();
 
 	public Student(String name, @Size(max = 13) String jmbg) {

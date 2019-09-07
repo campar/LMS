@@ -2,7 +2,6 @@ package com.lms.model;
 
 import java.util.Set;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -12,7 +11,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.MapsId;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -28,10 +26,6 @@ public class YearOfStudySubject {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(nullable = true)
-	@Size(max = 2)
-	private int finalGrade;
-
 	@ManyToOne
 	@JoinColumn(name = "subject_id")
 	private Subject subject;
@@ -42,12 +36,14 @@ public class YearOfStudySubject {
 	private YearOfStudy yearOfStudy;
 	
 	@OneToMany(mappedBy = "yearOfStudySubject")
+	private Set<FinalGrade> finalGrades;
+
+	@OneToMany(mappedBy = "yearOfStudySubject")
 	private Set<Notification> notifications;
 
-	public YearOfStudySubject(long id, @Size(max = 2) int finalGrade, Subject subject, YearOfStudy yearOfStudy) {
+	public YearOfStudySubject(long id, Subject subject, YearOfStudy yearOfStudy) {
 		super();
 		this.id = id;
-		this.finalGrade = finalGrade;
 		this.subject = subject;
 		this.yearOfStudy = yearOfStudy;
 	}

@@ -42,6 +42,9 @@ public class StudyProgramme {
 	@JsonView(View.YearOfStudy.class)
 	@OneToMany(mappedBy = "studyProgramme")
 	private Set<YearOfStudy> yearsOfStudy;
+	
+	@OneToMany(mappedBy = "studyProgramme")
+	private Set<StudyProgrammeStudent> studyProgrammeStudents;
 
 	@ManyToOne
 	@JsonView(View.YearOfStudy.class)
