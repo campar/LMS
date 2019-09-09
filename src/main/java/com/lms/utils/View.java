@@ -25,6 +25,20 @@ public class View {
 	public interface Subject {
 	};
 
+	public interface Professor {
+	};
+
+	public interface Title {
+
+	};
+
+	public interface Notification {
+
+	};
+
+	public interface SyllabusOutcome {
+
+	};
 //=========================
 //					@JsonView with multiple identifiers
 //=========================
