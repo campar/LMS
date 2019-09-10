@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.lms.model.Faculty;
 import com.lms.service.FacultyService;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin
 @RestController
 @RequestMapping("/api/admin/organization")
 public class OrganizationController {
