@@ -13,7 +13,6 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Type;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.lms.utils.View;
 
@@ -35,14 +34,15 @@ public class StudyProgramme {
 	@Type(type = "text")
 	private String description;
 
-	@JsonBackReference
 	@ManyToOne(fetch = FetchType.LAZY)
+	@JsonView(View.StudyProgramme.class)
 	private Faculty faculty;
 
 	@JsonView(View.YearOfStudy.class)
 	@OneToMany(mappedBy = "studyProgramme")
 	private Set<YearOfStudy> yearsOfStudy;
-	
+
+	@JsonView(View.StudyProgramme.class)
 	@OneToMany(mappedBy = "studyProgramme")
 	private Set<StudyProgrammeStudent> studyProgrammeStudents;
 

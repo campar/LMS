@@ -10,7 +10,8 @@ import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.Type;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.lms.utils.View;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,7 +34,7 @@ public class SyllabusOutcome {
 	@Type(type = "text")
 	private String description;
 
-	@JsonBackReference
+	@JsonView(View.SyllabusOutcome.class)
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Subject subject;
 
