@@ -55,7 +55,7 @@ public class User {
 	@NaturalId
 	@Column(length = 60)
 	private Role role;
-	
+
 	@OneToMany(mappedBy = "createdBy")
 	private Set<Notification> notifications;
 

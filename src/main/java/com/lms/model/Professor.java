@@ -7,6 +7,8 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonView;
+import com.lms.utils.View;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,7 +24,7 @@ public class Professor extends User {
 	private String jmbg;
 	private String biography;
 
-	@JsonBackReference
+	@JsonView(View.Professor.class)
 	@OneToMany(mappedBy = "professor")
 	Set<Title> titles;
 
