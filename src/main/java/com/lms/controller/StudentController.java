@@ -1,5 +1,7 @@
 package com.lms.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,10 +18,12 @@ import com.lms.service.StudentService;
 @RestController
 @RequestMapping("/api/student")
 public class StudentController {
+
 	@Autowired
 	StudentService studentService;
-	
-	@GetMapping(path = "/{id}/download", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
+
+	@GetMapping(path = "/{id}/download", produces = { MediaType.APPLICATION_JSON_VALUE,
+			MediaType.APPLICATION_XML_VALUE })
 	public StudentResponse exportStudent(@PathVariable Long id) {
 		Student student = studentService.findById(id);
 		StudentResponse response = new StudentResponse();
@@ -31,5 +35,10 @@ public class StudentController {
 		response.setJmbg(student.getJmbg());
 
 		return response;
+	}
+
+	@GetMapping("/find")
+	public List<Student> getAllStudents(String name, String lastName) {
+		return studentService.getAllStudents(name, lastName);
 	}
 }
