@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.lms.utils.View;
 
