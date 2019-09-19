@@ -37,6 +37,7 @@ public class Subject {
 	private int otherClasses;
 
 //	@JsonBackReference
+	@JsonView(View.Subject.class)
 	@OneToMany(mappedBy = "subject")
 	private Set<YearOfStudySubject> yearOfStudySubject;
 

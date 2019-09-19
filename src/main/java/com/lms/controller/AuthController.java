@@ -23,7 +23,7 @@ import com.lms.request.LoginForm;
 import com.lms.request.SignUpForm;
 import com.lms.response.JwtResponse;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin
 @RestController
 @RequestMapping("/api/auth")
 public class AuthController {

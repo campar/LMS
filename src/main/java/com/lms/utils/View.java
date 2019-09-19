@@ -19,6 +19,9 @@ public class View {
 	public interface StudyProgramme {
 	};
 
+	public interface FacultyWithStudyProgramme extends StudyProgramme, Faculty {
+	};
+
 	public interface StudyProgrammeWithYearsOfStudyWithSubjects extends YearOfStudy, StudyProgramme {
 	};
 

@@ -1,6 +1,7 @@
 package com.lms.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import com.lms.model.StudyProgramme;
 import com.lms.service.StudyProgrammeService;
 import com.lms.utils.View;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/study-programmes")
 public class StudyProgrammeController {

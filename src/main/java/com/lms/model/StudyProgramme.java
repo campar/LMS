@@ -35,7 +35,7 @@ public class StudyProgramme {
 	private String description;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JsonView(View.StudyProgramme.class)
+	@JsonView(View.FacultyWithStudyProgramme.class)
 	private Faculty faculty;
 
 	@JsonView(View.YearOfStudy.class)
