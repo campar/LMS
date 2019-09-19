@@ -14,7 +14,7 @@ import com.lms.model.User;
 import com.lms.service.ProfessorService;
 import com.lms.service.UserService;
 
-@CrossOrigin(origins = "*", maxAge = 3600)
+@CrossOrigin
 @RestController
 @RequestMapping("/api/admin/user")
 public class UserController {
