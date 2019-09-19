@@ -31,6 +31,9 @@ public class View {
 	public interface Professor {
 	};
 
+	public interface User {
+	};
+
 	public interface Title {
 
 	};

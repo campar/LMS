@@ -69,10 +69,35 @@ public class UserController {
 		return null;
 	}
 
+	@JsonView(View.User.class)
+	@GetMapping("/employee")
+	public List<User> listEmployee() {
+		List<User> employees = new ArrayList<User>();
+		userService.findAllByRole(Role.ROLE_EMPLOYEE).forEach(employees::add);
+
+		return employees;
+	}
+
+	@JsonView(View.User.class)
+	@GetMapping("/employee/{id}")
+	public Optional<User> getEmployee(@PathVariable("id") long id) {
+		return userService.findByRoleAndId(Role.ROLE_EMPLOYEE, id);
+	}
+
 	@PutMapping("/employee")
 	public User createEmployee(@RequestBody User user) {
 		user.setRole(Role.ROLE_EMPLOYEE);
 		user.setPassword(encoder.encode(user.getPassword()));
 		return userService.save(user);
+	}
+
+	@PutMapping("/employee/{id}")
+	public User updateEmployee(@PathVariable("id") long id, @RequestBody User user) {
+		Optional<User> u = userService.findByRoleAndId(Role.ROLE_EMPLOYEE, id);
+		if (u.isPresent()) {
+			user.setRole(Role.ROLE_EMPLOYEE);
+			return userService.save(user);
+		}
+		return null;
 	}
 }
