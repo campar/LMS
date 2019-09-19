@@ -51,7 +51,7 @@ INSERT INTO `year_of_study` (`id`, `year`, `study_programme_id`) VALUES (NULL, '
 #===================
 INSERT INTO `subject` (`id`, `different_kind_of_lectures`, `espb`, `name`, `number_of_exercises`, `number_of_lectures`, `other_classes`, `required`, `research_work`) VALUES (NULL, '5', '8', 'Racunarkse mreze', '99', '99', '99', b'1', '10');
 
-INSERT INTO `year_of_study_subject` (`year_of_study_id`, `subject_id`) VALUES ('1', '1');
-INSERT INTO `year_of_study_subject` (`year_of_study_id`, `subject_id`) VALUES ('2', '1');
+INSERT INTO `year_of_study_subject` (`professor_id`, `year_of_study_id`, `subject_id`) VALUES ('1', '1', '1');
+INSERT INTO `year_of_study_subject` (`professor_id`, `year_of_study_id`, `subject_id`) VALUES ('1', '2', '1');
 
 INSERT INTO `syllabus_outcome` (`id`, `description`, `period`, `sort`, `subject_id`) VALUES (NULL, 'Uvodna prica o predmetu. Tehnologija i mi', 'I nedelja ', '1', '1'), (NULL, 'Hardver', 'II nedelja ', '2', '1');
