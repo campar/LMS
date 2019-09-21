@@ -17,26 +17,26 @@ import com.lms.service.UniversityService;
 import com.lms.utils.View;
 
 @CrossOrigin
-@RequestMapping
+@RequestMapping("/api/university")
 @RestController
 public class UniversityController {
 
 	@Autowired
 	private UniversityService universityService;
 
-	@GetMapping("/university")
+	@GetMapping("")
 	@JsonView(View.UniversityWithFaculties.class)
 	public List<University> getAllUniversity() {
 		return universityService.getAllUniversity();
 	}
 
-	@GetMapping("/university/{id}")
+	@GetMapping("/{id}")
 	@JsonView(View.UniversityWithFaculties.class)
 	public University getUniversityById(@PathVariable int id) {
 		return universityService.getUniversityById(id);
 	}
 
-	@GetMapping("/university/{id}/faculties")
+	@GetMapping("/{id}/faculties")
 	@JsonView(View.UniversityWithFaculties.class)
 	public Set<Faculty> getFacultiesByUniversityId(@PathVariable int id) {
 		return universityService.getFacultiesByUniversityId(id);

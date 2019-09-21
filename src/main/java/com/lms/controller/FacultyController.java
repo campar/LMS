@@ -16,13 +16,13 @@ import com.lms.utils.View;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/faculties")
+@RequestMapping("/api/faculties")
 public class FacultyController {
 
 	@Autowired
 	private FacultyService facultyService;
 
-	@GetMapping("/")
+	@GetMapping("")
 	@JsonView(View.Faculty.class)
 	public List<Faculty> getAllFaculties() {
 		return facultyService.getAllFaculties();
