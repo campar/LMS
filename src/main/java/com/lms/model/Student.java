@@ -1,11 +1,13 @@
 package com.lms.model;
 
-import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Size;
+
+import com.fasterxml.jackson.annotation.JsonView;
+import com.lms.utils.View;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,8 +32,9 @@ public class Student extends User {
 	@OneToMany(mappedBy = "student")
 	private Set<ExamResults> examResults;
 
+	@JsonView(View.StudentYearOfStudy.class)
 	@OneToMany(mappedBy = "student")
-	private Set<StudentYearOfStudy> studentYearOfStudy = new HashSet<StudentYearOfStudy>();
+	private Set<StudentYearOfStudy> studentYearOfStudy;
 
 	public Student(String username, String email, String password, Role role, String name, String lastName,
 			@Size(max = 13) String jmbg, Set<StudyProgrammeStudent> studyProgrammeStudents, Set<FinalGrade> finalGrades,

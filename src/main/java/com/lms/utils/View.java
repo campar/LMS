@@ -15,6 +15,9 @@ public class View {
 
 	public interface YearOfStudy {
 	};
+	
+	public interface StudentYearOfStudy {
+	};
 
 	public interface StudyProgramme {
 	};
@@ -29,6 +32,9 @@ public class View {
 	};
 
 	public interface Professor {
+	};
+	
+	public interface Student {
 	};
 
 	public interface User {
