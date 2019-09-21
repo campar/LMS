@@ -14,7 +14,7 @@ import com.lms.utils.View;
 
 @CrossOrigin
 @RestController
-@RequestMapping("/study-programmes")
+@RequestMapping("/api/study-programmes")
 public class StudyProgrammeController {
 
 	@Autowired

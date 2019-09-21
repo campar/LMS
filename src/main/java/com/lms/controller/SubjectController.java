@@ -17,7 +17,7 @@ import com.lms.utils.View;
 
 @RestController
 @CrossOrigin
-@RequestMapping("/subjects")
+@RequestMapping("/api/subjects")
 public class SubjectController {
 
 	@Autowired
