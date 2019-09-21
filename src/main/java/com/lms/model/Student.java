@@ -32,7 +32,7 @@ public class Student extends User {
 	@OneToMany(mappedBy = "student")
 	private Set<ExamResults> examResults;
 
-	@JsonView(View.StudentYearOfStudy.class)
+	@JsonView(View.Student.class)
 	@OneToMany(mappedBy = "student")
 	private Set<StudentYearOfStudy> studentYearOfStudy;
 
