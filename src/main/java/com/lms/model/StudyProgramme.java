@@ -3,6 +3,8 @@ package com.lms.model;
 import java.util.Set;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -33,6 +35,12 @@ public class StudyProgramme {
 
 	@Type(type = "text")
 	private String description;
+
+	@Enumerated(EnumType.STRING)
+	private Degree degree;
+
+	@Type(type = "text")
+	private String title;
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JsonView(View.FacultyWithStudyProgramme.class)
