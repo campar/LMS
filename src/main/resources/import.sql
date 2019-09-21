@@ -51,8 +51,8 @@ INSERT INTO `faculty` (`id`, `description`, `name`, `phone_number`, `dean`, `uni
 #===================
 #STUDY_PROGRAMME INSERTS
 #===================
-INSERT INTO `study_programme` (`id`, `description`, `name`, `director`, `faculty_id`) VALUES (NULL, 'Struka softversko inzenjerstvo je mlada - prvi put se termin softversko inzenjerstvo pojavio 1968. godine, ali je danas u medjunarodnim okvirima jasno definisana kao posebna struka za kojom postoji izuzetno velika potražnja na medjunarodnom i domacem trzistu rada. ', 'Softversko inženjerstvo i informacione tehnologije', '2', '1');
-INSERT INTO `study_programme` (`id`, `description`, `name`, `director`, `faculty_id`) VALUES (NULL, 'Neki tamo opis za IT smer', 'Informacione tehnologije', '2', '1');
+INSERT INTO `study_programme` (`id`, `degree`, `description`, `name`, `title`, `director`, `faculty_id`) VALUES (NULL, 'BACHELOR_DEGREE', 'Struka softversko inzenjerstvo je mlada - prvi put se termin softversko inzenjerstvo pojavio 1968. godine, ali je danas u medjunarodnim okvirima jasno definisana kao posebna struka za kojom postoji izuzetno velika potražnja na medjunarodnom i domacem trzistu rada. ', 'Softversko inženjerstvo i informacione tehnologije', 'Diplomirani inženjer softvera', '2', '1');
+INSERT INTO `study_programme` (`id`, `degree`, `description`, `name`, `title`, `director`, `faculty_id`) VALUES (NULL, 'BACHELOR_DEGREE', 'Neki tamo opis za IT smer', 'Informacione tehnologije', 'Diplomirani inženjer informacionih tehnologija', '2', '1');
 
 
 #===================
