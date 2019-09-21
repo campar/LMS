@@ -17,12 +17,24 @@ public class StudentYearOfStudy {
 	private int id;
 
 	@ManyToOne
-    @MapsId("student_id")
-    @JoinColumn(name = "student_id")
-    private Student student;
-	
+	@MapsId("student_id")
+	@JoinColumn(name = "student_id")
+	private Student student;
+
 	@ManyToOne
-    @MapsId("year_of_study_id")
-    @JoinColumn(name = "year_of_study_id")
-    private YearOfStudy yearOfStudy;
+	@MapsId("year_of_study_id")
+	@JoinColumn(name = "year_of_study_id")
+	private YearOfStudy yearOfStudy;
+
+	public Long getStudentId() {
+		return student.getId();
+	}
+
+	public int getId() {
+		return id;
+	}
+
+	public Long getYearOfStudyId() {
+		return yearOfStudy.getId();
+	}
 }

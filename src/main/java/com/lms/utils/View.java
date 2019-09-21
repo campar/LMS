@@ -13,7 +13,19 @@ public class View {
 	public interface Faculty {
 	};
 
+	public interface StudyProgrammeStudent {
+	};
+
 	public interface YearOfStudy {
+	};
+
+	public interface FinalGrade {
+	};
+
+	public interface ExamResults {
+	};
+
+	public interface StudentYearOfStudy {
 	};
 
 	public interface StudyProgramme {
@@ -29,6 +41,9 @@ public class View {
 	};
 
 	public interface Professor {
+	};
+
+	public interface Student {
 	};
 
 	public interface User {

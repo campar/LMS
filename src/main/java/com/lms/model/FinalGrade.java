@@ -10,6 +10,9 @@ import javax.persistence.MapsId;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonView;
+import com.lms.utils.View;
+
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -23,17 +26,19 @@ public class FinalGrade {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	
+
 	@Size(max = 2)
 	private int final_grade;
 
 	@ManyToOne
-    @MapsId("student_id")
-    @JoinColumn(name = "student_id")
-    private Student student;
-	
+	@MapsId("student_id")
+	@JoinColumn(name = "student_id")
+	@JsonView(View.FinalGrade.class)
+	private Student student;
+
 	@ManyToOne
-    @MapsId("syos_id")
-    @JoinColumn(name = "syos_id")
-    private YearOfStudySubject yearOfStudySubject;
+	@MapsId("syos_id")
+	@JoinColumn(name = "syos_id")
+	@JsonView(View.FinalGrade.class)
+	private YearOfStudySubject yearOfStudySubject;
 }
