@@ -17,14 +17,22 @@ public class StudentService {
 	private StudentRepository studentRepository;
 
 	public List<Student> getAllStudents(@RequestParam(value = "name", required = false) String name,
-			@RequestParam(value = "lastName", required = false) String lastName) {
+			@RequestParam(value = "lastName", required = false) String lastName,
+			@RequestParam(value = "index_number", required = false) String index_number,
+			@RequestParam(value = "yearOfEnrollment", required = false) String yearOfEnrollment) {
 		if (name == null) {
 			name = "";
 		}
 		if (lastName == null) {
 			lastName = "";
 		}
-		return studentRepository.findBySearch(name, lastName);
+		if (index_number == null) {
+			index_number = "";
+		}
+		if (yearOfEnrollment == null) {
+			yearOfEnrollment = "";
+		}
+		return studentRepository.findBySearch(name, lastName, index_number, yearOfEnrollment);
 
 	}
 

@@ -24,12 +24,15 @@ public class Student extends User {
 	private String jmbg;
 
 	@OneToMany(mappedBy = "student")
+	@JsonView(View.Student.class)
 	private List<StudyProgrammeStudent> studyProgrammeStudents;
 
 	@OneToMany(mappedBy = "student")
+	@JsonView(View.Student.class)
 	private List<FinalGrade> finalGrades;
 
 	@OneToMany(mappedBy = "student")
+	@JsonView(View.Student.class)
 	private List<ExamResults> examResults;
 
 	@JsonView(View.Student.class)
