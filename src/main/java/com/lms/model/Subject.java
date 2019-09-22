@@ -30,6 +30,7 @@ public class Subject {
 	private String name;
 	private int espb;
 	private Boolean required;
+	private String description;
 	private int numberOfLectures;
 	private int numberOfExercises;
 	private int differentKindOfLectures;
@@ -45,14 +46,15 @@ public class Subject {
 	@OneToMany(mappedBy = "subject")
 	private List<SyllabusOutcome> syllabusOutcomes;
 
-	public Subject(int id, String name, int espb, Boolean required, int numberOfLectures, int numberOfExercises,
-			int differentKindOfLectures, int researchWork, int otherClasses,
+	public Subject(int id, String name, int espb, Boolean required, String description, int numberOfLectures,
+			int numberOfExercises, int differentKindOfLectures, int researchWork, int otherClasses,
 			List<YearOfStudySubject> yearOfStudySubject, List<SyllabusOutcome> syllabusOutcomes) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.espb = espb;
 		this.required = required;
+		this.description = description;
 		this.numberOfLectures = numberOfLectures;
 		this.numberOfExercises = numberOfExercises;
 		this.differentKindOfLectures = differentKindOfLectures;

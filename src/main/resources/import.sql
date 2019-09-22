@@ -64,7 +64,7 @@ INSERT INTO `year_of_study` (`id`, `year`, `study_programme_id`) VALUES (NULL, '
 #===================
 #SUBJECT INSERTS
 #===================
-INSERT INTO `subject` (`id`, `different_kind_of_lectures`, `espb`, `name`, `number_of_exercises`, `number_of_lectures`, `other_classes`, `required`, `research_work`) VALUES (NULL, '5', '8', 'Racunarkse mreze', '99', '99', '99', b'1', '10');
+INSERT INTO `subject` (`id`, `different_kind_of_lectures`, `espb`, `name`, `number_of_exercises`, `number_of_lectures`, `other_classes`, `required`, `research_work`, `description`) VALUES (NULL, '5', '8', 'Racunarkse mreze', '99', '99', '99', b'1', '10', 'OPIS PREDMETA');
 
 INSERT INTO `year_of_study_subject` (`professor_id`, `year_of_study_id`, `subject_id`) VALUES ('2', '1', '1');
 INSERT INTO `year_of_study_subject` (`professor_id`, `year_of_study_id`, `subject_id`) VALUES ('2', '2', '1');
@@ -92,3 +92,9 @@ INSERT INTO `exam_period` (`id`, `name`, `start_time`, `end_time`, `exam_type_id
 INSERT INTO `exam_period` (`id`, `name`, `start_time`, `end_time`, `exam_type_id`) VALUES (NULL, 'Mart II', '2019-03-01', '2019-03-07', 1);
 INSERT INTO `exam_period` (`id`, `name`, `start_time`, `end_time`, `exam_type_id`) VALUES (NULL, 'Jun I', '2019-06-01', '2019-06-07', 2);
 
+
+
+#===================
+# SUBJECT_NOTIFICATION
+#===================
+INSERT INTO `notification` (`id`, `content`, `created_date`, `title`, `created_by_id`, `year_of_study_subject_id`) VALUES (NULL, 'SADRZAJ NOTIFIKACIJE', '2019-09-24 00:00:00', 'NASLOV NOTIFIKACIJE', 2, 1);
