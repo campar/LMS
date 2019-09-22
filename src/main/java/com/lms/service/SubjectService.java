@@ -6,8 +6,6 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.lms.model.Professor;
-import com.lms.model.StudyProgramme;
 import com.lms.model.Subject;
 import com.lms.model.SyllabusOutcome;
 import com.lms.repository.SubjectRepository;
@@ -27,7 +25,8 @@ public class SubjectService {
 		return subjectRepository.findById(id).get().getSyllabusOutcomes();
 	}
 	
-	public Set<Subject> allSubjectOfProfesorOnProgramme(StudyProgramme studyProgramme, Professor professor) {
+	public Set<Subject> allSubjectOfProfesorOnProgramme(int studyProgramme, Long professor) {
+//		return subjectRepository.allSubjectOfProfesorOnProgramme(studyProgramme, professor);
 		return subjectRepository.allSubjectOfProfesorOnProgramme(studyProgramme, professor);
 	}
 }

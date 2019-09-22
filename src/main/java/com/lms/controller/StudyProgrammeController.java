@@ -45,6 +45,7 @@ public class StudyProgrammeController {
 		return null;
 	}
 	
+	@JsonView(View.Subject.class)
 	@GetMapping("/{id}/{professorId}/subjects")
 	public Set<Subject> allSubjectOfProfesorOnProgramme(@PathVariable int id, @PathVariable int professorId) {
 		Optional<StudyProgramme> studyProgramme = studyProgrammeService.getStudyProgrammeById(id);
@@ -54,6 +55,6 @@ public class StudyProgrammeController {
 			return null;
 		}
 
-		return subjectService.allSubjectOfProfesorOnProgramme(studyProgramme.get(), professor.get());
+		return subjectService.allSubjectOfProfesorOnProgramme(1, (long)2);
 	}
 }
