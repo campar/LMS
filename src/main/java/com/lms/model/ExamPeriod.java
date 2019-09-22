@@ -1,7 +1,7 @@
 package com.lms.model;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -25,10 +25,10 @@ public class ExamPeriod {
 	private String name;
 	private Date startTime;
 	private Date endTime;
-	
+
 	@OneToMany(mappedBy = "examPeriod")
-	private Set<ExamResults> examResults;
-	
+	private List<ExamResults> examResults;
+
 	@ManyToOne
 	private ExamType examType;
 

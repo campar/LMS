@@ -1,6 +1,6 @@
 package com.lms.controller;
 
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -31,7 +31,7 @@ public class SubjectController {
 
 	@GetMapping("/{id}/sillabus")
 	@JsonView(View.Subject.class)
-	public Set<SyllabusOutcome> getSillabusBySubjectId(@PathVariable int id) {
+	public List<SyllabusOutcome> getSillabusBySubjectId(@PathVariable int id) {
 		return subjectService.getSillabusBySubjectId(id);
 	}
 }

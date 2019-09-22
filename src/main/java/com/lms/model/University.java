@@ -1,8 +1,7 @@
 package com.lms.model;
 
 import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -35,7 +34,7 @@ public class University {
 
 	@OneToMany(mappedBy = "university")
 	@JsonView(View.UniversityWithFaculties.class)
-	private Set<Faculty> faculties = new HashSet<>();
+	private List<Faculty> faculties;
 
 	@ManyToOne
 	@JsonView(View.UniversityWithFaculties.class)
@@ -47,7 +46,7 @@ public class University {
 	private Address address;
 
 	public University(int id, String name, Date dateOfEstablishment, String phoneNumber, String description,
-			Set<Faculty> faculties, Professor rector, Address address) {
+			List<Faculty> faculties, Professor rector, Address address) {
 		super();
 		this.id = id;
 		this.name = name;

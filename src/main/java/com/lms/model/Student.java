@@ -1,6 +1,6 @@
 package com.lms.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -24,21 +24,21 @@ public class Student extends User {
 	private String jmbg;
 
 	@OneToMany(mappedBy = "student")
-	private Set<StudyProgrammeStudent> studyProgrammeStudents;
+	private List<StudyProgrammeStudent> studyProgrammeStudents;
 
 	@OneToMany(mappedBy = "student")
-	private Set<FinalGrade> finalGrades;
+	private List<FinalGrade> finalGrades;
 
 	@OneToMany(mappedBy = "student")
-	private Set<ExamResults> examResults;
+	private List<ExamResults> examResults;
 
 	@JsonView(View.Student.class)
 	@OneToMany(mappedBy = "student")
-	private Set<StudentYearOfStudy> studentYearOfStudy;
+	private List<StudentYearOfStudy> studentYearOfStudy;
 
 	public Student(String username, String email, String password, Role role, String name, String lastName,
-			@Size(max = 13) String jmbg, Set<StudyProgrammeStudent> studyProgrammeStudents, Set<FinalGrade> finalGrades,
-			Set<ExamResults> examResults, Set<StudentYearOfStudy> studentYearOfStudy) {
+			@Size(max = 13) String jmbg, List<StudyProgrammeStudent> studyProgrammeStudents,
+			List<FinalGrade> finalGrades, List<ExamResults> examResults, List<StudentYearOfStudy> studentYearOfStudy) {
 		super(username, email, password, role);
 		this.name = name;
 		this.lastName = lastName;

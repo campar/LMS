@@ -38,7 +38,7 @@ public class UniversityController {
 
 	@GetMapping("/{id}/faculties")
 	@JsonView(View.UniversityWithFaculties.class)
-	public Set<Faculty> getFacultiesByUniversityId(@PathVariable int id) {
+	public List<Faculty> getFacultiesByUniversityId(@PathVariable int id) {
 		return universityService.getFacultiesByUniversityId(id);
 	}
 }
