@@ -13,6 +13,9 @@ public class View {
 	public interface Faculty {
 	};
 
+	public interface YearOfStudySubject extends Subject {
+	};
+
 	public interface StudyProgrammeStudent {
 	};
 

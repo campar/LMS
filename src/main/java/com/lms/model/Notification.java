@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import org.hibernate.annotations.Type;
 import org.springframework.data.annotation.CreatedDate;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
 import com.lms.utils.View;
 
@@ -35,6 +36,7 @@ public class Notification {
 
 	@CreatedDate
 	@Column(name = "created_date")
+	@JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss", timezone = "Europe/Belgrade")
 	private Date createdDate;
 
 	@Type(type = "text")

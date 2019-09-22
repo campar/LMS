@@ -37,10 +37,14 @@ public class YearOfStudy {
 	@OneToMany(mappedBy = "yearOfStudy")
 	private List<StudentYearOfStudy> studentYearOfStudy;
 
-	public YearOfStudy(Long id, int year, StudyProgramme studyProgramme) {
+	public YearOfStudy(Long id, int year, StudyProgramme studyProgramme, List<YearOfStudySubject> yearOfStudySubject,
+			List<StudentYearOfStudy> studentYearOfStudy) {
 		super();
 		this.id = id;
 		this.year = year;
 		this.studyProgramme = studyProgramme;
+		this.yearOfStudySubject = yearOfStudySubject;
+		this.studentYearOfStudy = studentYearOfStudy;
 	}
+
 }
