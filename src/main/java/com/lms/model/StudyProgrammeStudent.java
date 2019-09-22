@@ -26,6 +26,7 @@ public class StudyProgrammeStudent {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String index_number;
+	private String yearOfEnrollment;
 
 	@ManyToOne
 	@MapsId("study_program_id")
@@ -38,4 +39,15 @@ public class StudyProgrammeStudent {
 	@JoinColumn(name = "student_id")
 	@JsonView(View.StudyProgrammeStudent.class)
 	private Student student;
+
+	public StudyProgrammeStudent(long id, String index_number, String yearOfEnrollment, StudyProgramme studyProgramme,
+			Student student) {
+		super();
+		this.id = id;
+		this.index_number = index_number;
+		this.yearOfEnrollment = yearOfEnrollment;
+		this.studyProgramme = studyProgramme;
+		this.student = student;
+	}
+
 }

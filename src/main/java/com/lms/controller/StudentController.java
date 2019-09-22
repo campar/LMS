@@ -24,16 +24,16 @@ public class StudentController {
 
 	@Autowired
 	StudentService studentService;
-	
+
 	@GetMapping("/{id}")
 	@JsonView(View.Student.class)
 	public Student findbyId(@PathVariable Long id) {
 		Optional<Student> student = studentService.findById(id);
-		
+
 		if (student.isPresent()) {
 			return student.get();
 		}
-		
+
 		return null;
 	}
 
@@ -42,13 +42,13 @@ public class StudentController {
 	public StudentResponse exportStudent(@PathVariable Long id) {
 		Optional<Student> studentOptional = studentService.findById(id);
 		Student student;
-		
+
 		if (studentOptional.isPresent()) {
 			student = studentOptional.get();
 		} else {
 			return null;
 		}
-		
+
 		StudentResponse response = new StudentResponse();
 		response.setId(student.getId());
 		response.setName(student.getName());
@@ -60,7 +60,8 @@ public class StudentController {
 	}
 
 	@GetMapping("/find")
-	public List<Student> findStudents(String name, String lastName) {
-		return studentService.getAllStudents(name, lastName);
+	@JsonView(View.Student.class)
+	public List<Student> findStudents(String name, String lastName, String index_number, String yearOfEnrollment) {
+		return studentService.getAllStudents(name, lastName, index_number, yearOfEnrollment);
 	}
 }
