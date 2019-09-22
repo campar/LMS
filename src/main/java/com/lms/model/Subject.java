@@ -1,6 +1,6 @@
 package com.lms.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -39,15 +39,15 @@ public class Subject {
 //	@JsonBackReference
 	@JsonView(View.Subject.class)
 	@OneToMany(mappedBy = "subject")
-	private Set<YearOfStudySubject> yearOfStudySubject;
+	private List<YearOfStudySubject> yearOfStudySubject;
 
 	@JsonView(View.Subject.class)
 	@OneToMany(mappedBy = "subject")
-	private Set<SyllabusOutcome> syllabusOutcomes;
+	private List<SyllabusOutcome> syllabusOutcomes;
 
 	public Subject(int id, String name, int espb, Boolean required, int numberOfLectures, int numberOfExercises,
-			int differentKindOfLectures, int researchWork, int otherClasses, Set<YearOfStudySubject> yearOfStudySubject,
-			Set<SyllabusOutcome> syllabusOutcomes) {
+			int differentKindOfLectures, int researchWork, int otherClasses,
+			List<YearOfStudySubject> yearOfStudySubject, List<SyllabusOutcome> syllabusOutcomes) {
 		super();
 		this.id = id;
 		this.name = name;

@@ -1,6 +1,6 @@
 package com.lms.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -37,7 +37,7 @@ public class Faculty {
 
 	@JsonView(View.Faculty.class)
 	@OneToMany(mappedBy = "faculty")
-	private Set<StudyProgramme> studyProgrammes;
+	private List<StudyProgramme> studyProgrammes;
 
 	@ManyToOne
 	@JsonView(View.Faculty.class)
@@ -45,7 +45,7 @@ public class Faculty {
 	private Professor dean;
 
 	public Faculty(int id, String name, String phoneNumber, String description, University university,
-			Set<StudyProgramme> studyProgrammes, Professor dean) {
+			List<StudyProgramme> studyProgrammes, Professor dean) {
 		super();
 		this.id = id;
 		this.name = name;

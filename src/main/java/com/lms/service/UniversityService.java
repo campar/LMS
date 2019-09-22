@@ -27,7 +27,7 @@ public class UniversityService {
 		return universityRepository.findById(id).get();
 	}
 
-	public Set<Faculty> getFacultiesByUniversityId(int id) {
+	public List<Faculty> getFacultiesByUniversityId(int id) {
 
 		return universityRepository.findById(id).get().getFaculties();
 	}

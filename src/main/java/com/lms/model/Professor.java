@@ -1,6 +1,6 @@
 package com.lms.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -25,10 +25,10 @@ public class Professor extends User {
 
 	@JsonView(View.Professor.class)
 	@OneToMany(mappedBy = "professor")
-	Set<Title> titles;
+	private List<Title> titles;
 
 	public Professor(String username, String email, String password, Role role, String name,
-			@Size(max = 13) String jmbg, String biography, Set<Title> titles) {
+			@Size(max = 13) String jmbg, String biography, List<Title> titles) {
 		super(username, email, password, role);
 		this.name = name;
 		this.jmbg = jmbg;

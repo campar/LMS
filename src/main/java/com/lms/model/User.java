@@ -1,6 +1,6 @@
 package com.lms.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -57,7 +57,7 @@ public class User {
 	private Role role;
 
 	@OneToMany(mappedBy = "createdBy")
-	private Set<Notification> notifications;
+	private List<Notification> notifications;
 
 	public User(String username, String email, String password, Role role) {
 		this.username = username;

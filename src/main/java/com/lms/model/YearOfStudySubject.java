@@ -1,6 +1,6 @@
 package com.lms.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -38,17 +38,17 @@ public class YearOfStudySubject {
 	@MapsId("year_of_study_id")
 	@JoinColumn(name = "year_of_study_id")
 	private YearOfStudy yearOfStudy;
-	
+
 	@ManyToOne
-    @MapsId("professor_id")
-    @JoinColumn(name = "professor_id")
-    private Professor professor;
+	@MapsId("professor_id")
+	@JoinColumn(name = "professor_id")
+	private Professor professor;
 
 	@OneToMany(mappedBy = "yearOfStudySubject")
-	private Set<FinalGrade> finalGrades;
+	private List<FinalGrade> finalGrades;
 
 	@OneToMany(mappedBy = "yearOfStudySubject")
-	private Set<Notification> notifications;
+	private List<Notification> notifications;
 
 	public YearOfStudySubject(long id, Subject subject, YearOfStudy yearOfStudy) {
 		super();

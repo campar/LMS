@@ -37,7 +37,7 @@ public class Title {
 
 	@JsonView(View.Title.class)
 	@ManyToOne
-	Professor professor;
+	private Professor professor;
 
 	public Title(long id, String name, Date dateStart, Date dateEnd, ScientificField scientificField,
 			Professor professor) {

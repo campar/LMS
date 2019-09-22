@@ -1,6 +1,6 @@
 package com.lms.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,11 +21,11 @@ public class ExamType {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
 	private String name;
-	
-	@OneToMany(mappedBy = "examType")
-	private Set<ExamPeriod> exams;
 
-	public ExamType(int id, String name, Set<ExamPeriod> exams) {
+	@OneToMany(mappedBy = "examType")
+	private List<ExamPeriod> exams;
+
+	public ExamType(int id, String name, List<ExamPeriod> exams) {
 		super();
 		this.id = id;
 		this.name = name;

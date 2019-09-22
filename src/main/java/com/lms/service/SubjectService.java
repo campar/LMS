@@ -1,6 +1,6 @@
 package com.lms.service;
 
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +20,7 @@ public class SubjectService {
 		return subjectRepository.findById(id).get();
 	}
 
-	public Set<SyllabusOutcome> getSillabusBySubjectId(int id) {
+	public List<SyllabusOutcome> getSillabusBySubjectId(int id) {
 		return subjectRepository.findById(id).get().getSyllabusOutcomes();
 	}
 }

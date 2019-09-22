@@ -1,7 +1,6 @@
 package com.lms.model;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -33,10 +32,10 @@ public class YearOfStudy {
 	private StudyProgramme studyProgramme;
 
 	@OneToMany(mappedBy = "yearOfStudy")
-	private Set<YearOfStudySubject> yearOfStudySubject;
-	
+	private List<YearOfStudySubject> yearOfStudySubject;
+
 	@OneToMany(mappedBy = "yearOfStudy")
-    private Set<StudentYearOfStudy> studentYearOfStudy = new HashSet<StudentYearOfStudy>();
+	private List<StudentYearOfStudy> studentYearOfStudy;
 
 	public YearOfStudy(Long id, int year, StudyProgramme studyProgramme) {
 		super();

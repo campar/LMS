@@ -1,6 +1,6 @@
 package com.lms.model;
 
-import java.util.Set;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -48,11 +48,11 @@ public class StudyProgramme {
 
 	@JsonView(View.YearOfStudy.class)
 	@OneToMany(mappedBy = "studyProgramme")
-	private Set<YearOfStudy> yearsOfStudy;
+	private List<YearOfStudy> yearsOfStudy;
 
 	@JsonView(View.StudyProgramme.class)
 	@OneToMany(mappedBy = "studyProgramme")
-	private Set<StudyProgrammeStudent> studyProgrammeStudents;
+	private List<StudyProgrammeStudent> studyProgrammeStudents;
 
 	@ManyToOne
 	@JsonView(View.YearOfStudy.class)
