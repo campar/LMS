@@ -35,6 +35,10 @@ public class StudentService {
 		return studentRepository.findBySearch(name, lastName, index_number, yearOfEnrollment);
 
 	}
+	
+	public List<Student> getStudentsByYearBySubject(int subjectId, int yearId) {
+		return studentRepository.getStudentsByYearBySubject(subjectId, yearId);
+	}
 
 	public Optional<Student> findById(Long id) {
 		return studentRepository.findById(id);
