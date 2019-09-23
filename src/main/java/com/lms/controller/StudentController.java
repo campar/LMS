@@ -58,6 +58,12 @@ public class StudentController {
 
 		return response;
 	}
+	
+	@GetMapping("/subject/{subjectId}/{yearId}")
+	@JsonView(View.Student.class)
+	public List<Student> getStudentsByYearBySubject(@PathVariable int subjectId, @PathVariable int yearId) {
+		return studentService.getStudentsByYearBySubject(subjectId, yearId);
+	}
 
 	@GetMapping("/find")
 	public List<Student> findStudents(String name, String lastName) {
