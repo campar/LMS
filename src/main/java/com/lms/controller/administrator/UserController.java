@@ -63,6 +63,12 @@ public class UserController {
 	public Professor updateProfessor(@PathVariable("id") long id, @RequestBody Professor professor) {
 		Optional<Professor> p = professorService.findById(id);
 		if (p.isPresent()) {
+			if (professor.getPassword().isEmpty()) {
+				professor.setPassword(p.get().getPassword());
+			} else {
+				professor.setPassword(encoder.encode(professor.getPassword()));
+			}
+
 			professor.setRole(Role.ROLE_PROFESSOR);
 			return professorService.save(professor);
 		}
@@ -84,7 +90,7 @@ public class UserController {
 		return userService.findByRoleAndId(Role.ROLE_EMPLOYEE, id);
 	}
 
-	@PutMapping("/employee")
+	@PostMapping("/employee")
 	public User createEmployee(@RequestBody User user) {
 		user.setRole(Role.ROLE_EMPLOYEE);
 		user.setPassword(encoder.encode(user.getPassword()));
@@ -95,6 +101,12 @@ public class UserController {
 	public User updateEmployee(@PathVariable("id") long id, @RequestBody User user) {
 		Optional<User> u = userService.findByRoleAndId(Role.ROLE_EMPLOYEE, id);
 		if (u.isPresent()) {
+			if (user.getPassword().isEmpty()) {
+				user.setPassword(u.get().getPassword());
+			} else {
+				user.setPassword(encoder.encode(user.getPassword()));
+			}
+
 			user.setRole(Role.ROLE_EMPLOYEE);
 			return userService.save(user);
 		}
