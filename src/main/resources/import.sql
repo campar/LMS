@@ -16,7 +16,7 @@ INSERT INTO `address` (`id`, `number`, `street`, `city_id`) VALUES (NULL, '13', 
 #===================
 
 INSERT INTO `users` (`id`, `email`, `password`, `role`, `username`) VALUES (NULL, 'admin1@lms.com', '$2a$10$Q7sQxPEZugGSmiOHqy6LNOEXlHBs/syeZlEe2B1frMJpdtWs1B/L.', 'ROLE_ADMIN', 'admin1');
-INSERT INTO `users` (`id`, `email`, `password`, `role`, `username`) VALUES (NULL, 'profa1@lms.com', '$2a$10$APc9riVj5qek9jz/i1yNWO5TVC8.knWnAkAEJ2LD7BHfB.7Ts9.r.', 'ROLE_PROFESSOR', 'profa1');
+INSERT INTO `users` (`id`, `email`, `password`, `role`, `username`) VALUES (NULL, 'profa1@lms.com', '$2a$10$MlIwDgK3dxPKoPDj04oR9.PMdd2oYCllE57mND..WCSdwTNEDfmay', 'ROLE_PROFESSOR', 'profa1');
 INSERT INTO `users` (`id`, `email`, `password`, `role`, `username`) VALUES (NULL, 'student1@lms.com', '$2a$10$QHl3XqVlHNwyMhlZfHtE..uZoUYwQPwz/ZHRcJ6CsOShtyM6ZPvUK', 'ROLE_STUDENT', 'student1');
 INSERT INTO `users` (`id`, `email`, `password`, `role`, `username`) VALUES (NULL, 'employee1@lms.com', '$2a$10$o2PUqWRzyCncCMuQUiWMieAd6z.bEOhLMdyTyXUMAs5tdzRKQi4t6', 'ROLE_EMPLOYEE', 'employee1');
 
