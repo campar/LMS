@@ -46,7 +46,7 @@ public class StudyProgramme {
 	@JsonView(View.FacultyWithStudyProgramme.class)
 	private Faculty faculty;
 
-	@JsonView(View.YearOfStudy.class)
+	@JsonView(View.StudyProgrammeWithYearsOfStudyWithSubjects.class)
 	@OneToMany(mappedBy = "studyProgramme")
 	private List<YearOfStudy> yearsOfStudy;
 
@@ -55,7 +55,7 @@ public class StudyProgramme {
 	private List<StudyProgrammeStudent> studyProgrammeStudents;
 
 	@ManyToOne
-	@JsonView(View.YearOfStudy.class)
+	@JsonView(View.StudyProgramme.class)
 	@JoinColumn(name = "director", referencedColumnName = "id", insertable = false, updatable = false)
 	private Professor director;
 
